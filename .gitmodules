@@ -1,0 +1,6 @@
+[submodule "backend"]
+	path = backend
+	url = git@github.com:TQS-MyVet/backend.git
+[submodule "web_ui"]
+	path = web_ui
+	url = git@github.com:TQS-MyVet/web_ui.git
