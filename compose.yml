@@ -7,7 +7,7 @@ services:
       POSTGRES_PASSWORD: postgres
     healthcheck:
       test: pg_isready -U postgres
-      interval: 1m30s
+      interval: 10s
       timeout: 30s
       retries: 3
       start_period: 30s
@@ -27,7 +27,22 @@ services:
       - "8080:8080"
     depends_on:
       db_pg:
-        condition: service_healthy  
+        condition: service_healthy 
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.application.name":"myvet",
+        "spring.datasource.url":"jdbc:postgresql://db_pg:5432/postgres",
+        "spring.datasource.username":"postgres",
+        "spring.datasource.password":"postgres",
+        "spring.datasource.driver-class-name":"org.postgresql.Driver",
+        "spring.jpa.hibernate.ddl-auto":"update",
+        "spring.mail.host":"smtp.gmail.com",
+        "spring.mail.port":"587",
+        "spring.mail.username":"myvetclinicavet@gmail.com",
+        "spring.mail.password":"bdtwoxqunqcjxymz",
+        "spring.mail.properties.mail.smtp.auth":"true",
+        "spring.mail.properties.mail.smtp.starttls.enable":"true"
+        }' 
     networks:
       - backend
     restart: unless-stopped
