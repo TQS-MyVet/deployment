@@ -76,19 +76,19 @@ services:
       - frontend
     restart: unless-stopped
 
-  # digital_signage:
-  #   build:
-  #     context: ./web_ui/digital_signage
-  #     dockerfile: Dockerfile
-  #   image: ghcr.io/tqs-myvet/myvet_digitalsignage:${TAG:-latest}
-  #   ports:
-  #     - "3002:3002"
-  #   volumes:
-  #     - ds_node_modules:/web_app/node_modules
-  #     - ./web_ui/digital_signage:/web_app
-  #   networks:
-  #     - frontend
-  #   restart: unless-stopped
+  digital_signage:
+    build:
+      context: ./web_ui/digital_signage
+      dockerfile: Dockerfile
+    image: ghcr.io/tqs-myvet/myvet_digitalsignage:${TAG:-latest}
+    ports:
+      - "3002:3002"
+    volumes:
+      - ds_node_modules:/web_app/node_modules
+      - ./web_ui/digital_signage:/web_app
+    networks:
+      - frontend
+    restart: unless-stopped
 
   proxy:
     image: nginx:latest
@@ -104,7 +104,7 @@ services:
       - api
       - admin_web
       - user_web
-      # - digital_signage
+      - digital_signage
 
 networks:
   frontend:
