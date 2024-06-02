@@ -54,7 +54,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - node_modules:/web_app/node_modules
+      - admin_node_modules:/web_app/node_modules
       - ./web_ui/admin_interface:/web_app
     networks:
       - frontend
@@ -67,7 +67,7 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - node_modules:/web_app/node_modules
+      - user_node_modules:/web_app/node_modules
       - ./web_ui/user_interface:/web_app
     networks:
       - frontend
@@ -80,7 +80,7 @@ services:
     ports:
       - "3002:3002"
     volumes:
-      - node_modules:/web_app/node_modules
+      - ds_node_modules:/web_app/node_modules
       - ./web_ui/digital_signage:/web_app
     networks:
       - frontend
@@ -111,5 +111,9 @@ networks:
 volumes:
   pg_data:
     driver: local
-  node_modules:
+  ds_node_modules:
+    driver: local
+  admin_node_modules:
+    driver: local
+  user_node_modules:
     driver: local
