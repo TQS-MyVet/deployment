@@ -42,7 +42,7 @@ services:
         "spring.mail.username":"myvetclinicavet@gmail.com",
         "spring.mail.password":"${MAIL_PASSWORD}",
         "spring.mail.properties.mail.smtp.auth":"true",
-        "spring.mail.properties.mail.smtp.starttls.enable":"true",
+        "spring.mail.properties.mail.smtp.starttls.enable":"true"
         }' 
     networks:
       - backend
