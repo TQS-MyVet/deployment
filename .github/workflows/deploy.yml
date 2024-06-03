@@ -38,6 +38,7 @@ jobs:
      env:
        PRODUCTION: true
        POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+       MAIL_PASSWORDs: ${{ secrets.MAIL_PASSWORD }}
        POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
      steps:
      - uses: actions/checkout@v3
